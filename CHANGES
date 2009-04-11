@@ -1,4 +1,9 @@
 Revision history for Perl extension CGI::Application::Demo::Ajax.
 
-1.00  Wed Apr 11 09:22:00 2009
+1.01  Sun Apr 12 09:21:00 2009
+	  - Remove unused Search.pm
+	  - Fix date in this file for V 1.00. 2009-04-11 was a Sat, not a Wed.
+	  - Fix README which was copied from HTML::Parser::Simple and not updated
+
+1.00  Sat Apr 11 09:22:00 2009
 	  - Original version

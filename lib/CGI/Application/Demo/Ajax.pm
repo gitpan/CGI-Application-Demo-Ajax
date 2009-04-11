@@ -20,7 +20,7 @@ use HTML::Template;
 
 use JSON::XS;
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 # -----------------------------------------------
 

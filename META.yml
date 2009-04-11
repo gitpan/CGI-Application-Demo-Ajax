@@ -1,6 +1,6 @@
 ---
 name: CGI-Application-Demo-Ajax
-version: 1.00
+version: 1.01
 author:
   - 'Ron Savage <ron@savage.net.au>'
 abstract: 'A search engine using CGI::Application, AJAX and JSON'
@@ -21,10 +21,7 @@ build_requires:
 provides:
   CGI::Application::Demo::Ajax:
     file: lib/CGI/Application/Demo/Ajax.pm
-    version: 1.00
-  CGI::Application::Demo::Search:
-    file: lib/CGI/Application/Demo/Search.pm
-    version: 1.00
+    version: 1.01
 generated_by: Module::Build version 0.280801
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html

@@ -1,4 +1,4 @@
-README file for HTML::Parser::Simple.
+README file for CGI::Application::Demo::Ajax.
 
 See also: CHANGES.
 
@@ -9,8 +9,8 @@ ftp://ftp.info-zip.org/pub/infozip/
 
 1 Installing from a Unix-like distro
 ------------------------------------
-shell>gunzip HTML-Parser-Simple-1.00.tgz
-shell>tar mxvf HTML-Parser-Simple-1.00.tar
+shell>gunzip CGI-Application-Demo-Ajax-1.01.tgz
+shell>tar mxvf CGI-Application-Demo-Ajax-1.01.tar
 
 On Unix-like systems, assuming you have installed Module::Build V 0.25+:
 
@@ -39,20 +39,20 @@ shell>exit            (for Unix-like systems)
 
 On all systems:
 
-Run Simple.pm through you favourite pod2html translator.
+Run Ajax.pm through you favourite pod2html translator.
 
 If you are using my fancy-pom2.pl, with its 'default.css' file installed in
 /apache2/htdocs/assets/css/, you'd do:
 
-shell>perl fancy-pom2.pl html -css Simple.pm > /apache2/htdocs/assets/Simple.html
+shell>perl fancy-pom2.pl html -css Ajax.pm > /apache2/htdocs/assets/Ajax.html
 
 or perhaps something like:
 
-shell>perl fancy-pom2.pl html -css Simple.pm > /perl/html/site/lib/HTML/Parser/Simple.html
+shell>perl fancy-pom2.pl html -css Ajax.pm > /perl/html/site/lib/CGI/Application/Demo/Ajax.html
 
 2 Installing from an ActiveState distro
 ---------------------------------------
-shell>unzip HTML-Parser-Simple-1.00.zip
-shell>ppm install --location=. HTML-Parser-Simple
-shell>del HTML-Parser-Simple-1.00.ppd
-shell>del PPM-HTML-Parser-Simple-1.00.tar.gz
+shell>unzip CGI-Application-Demo-Ajax-1.01.zip
+shell>ppm install --location=. CGI-Application-Demo-Ajax
+shell>del CGI-Application-Demo-Ajax-1.01.ppd
+shell>del PPM-CGI-Application-Demo-Ajax-1.01.tar.gz
