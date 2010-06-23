@@ -1,12 +1,22 @@
 ---
-name: CGI-Application-Demo-Ajax
-version: 1.01
+abstract: 'A search engine using CGI::Application, AJAX and JSON'
 author:
   - 'Ron Savage <ron@savage.net.au>'
-abstract: 'A search engine using CGI::Application, AJAX and JSON'
+build_requires:
+  Test::More: 0
+  Test::Pod: 0
+configure_requires:
+  Module::Build: 0.36
+generated_by: 'Module::Build version 0.3603'
 license: artistic
-resources:
-  license: http://opensource.org/licenses/artistic-license.php
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: CGI-Application-Demo-Ajax
+provides:
+  CGI::Application::Demo::Ajax:
+    file: lib/CGI/Application/Demo/Ajax.pm
+    version: 1.04
 requires:
   CGI::Application: 0
   Carp: 0
@@ -15,14 +25,6 @@ requires:
   DBI: 0
   HTML::Template: 0
   JSON::XS: 0
-build_requires:
-  Test::More: 0
-  Test::Pod: 0
-provides:
-  CGI::Application::Demo::Ajax:
-    file: lib/CGI/Application/Demo/Ajax.pm
-    version: 1.01
-generated_by: Module::Build version 0.280801
-meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.2.html
-  version: 1.2
+resources:
+  license: http://opensource.org/licenses/artistic-license.php
+version: 1.04

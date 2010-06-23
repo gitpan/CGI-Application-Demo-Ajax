@@ -1,4 +1,5 @@
 Build.PL
+cgi-bin/ajax.cgi
 Changelog.ini
 CHANGES
 htdocs/ajax
@@ -12,7 +13,7 @@ lib/CGI/Application/Demo/.htajax.conf
 lib/CGI/Application/Demo/Ajax.pm
 Makefile.PL
 MANIFEST			This list of files
+META.yml
 README
 t/00.pod.t
 t/01.load.t
-META.yml

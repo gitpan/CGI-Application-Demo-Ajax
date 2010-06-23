@@ -20,7 +20,7 @@ use HTML::Template;
 
 use JSON::XS;
 
-our $VERSION = '1.01';
+our $VERSION = '1.04';
 
 # -----------------------------------------------
 
@@ -127,7 +127,7 @@ sub load_config_file
 sub log
 {
 	my($self, $s) = @_;
-	my($sth)      = $$self{'_dbh'} -> prepare('insert into log (message) values (?)');
+	my($sth)      = $$self{'_dbh'} -> prepare("insert into $$self{'_log_table'} (message) values (?)");
 	my $time      = localtime();
 
 	$sth -> execute($time . ': ' . ($s || '') );
@@ -207,11 +207,12 @@ sub setup
 
 	# Connect to the database for logging.
 
-	$$self{'_dbh'} = DBI -> connect("DBI:CSV:f_dir=$$self{'_temp_dir'}");
+	$$self{'_dbh'}       = DBI -> connect("DBI:CSV:f_dir=$$self{'_temp_dir'}");
+	$$self{'_log_table'} = 'ajax.log';
 
-	$$self{'_dbh'} -> do('drop table log');
+	$$self{'_dbh'} -> do("drop table $$self{'_log_table'}");
 
-	my($sth) = $$self{'_dbh'} -> prepare('create table log(message varchar(255) )');
+	my($sth) = $$self{'_dbh'} -> prepare("create table $$self{'_log_table'}(message varchar(255) )");
 
 	$sth -> execute();
 
@@ -311,16 +312,16 @@ help on unpacking and installing distros.
 
 =head1 Installation
 
-All these assume your doc root is /home/ron/httpd/prefork/htdocs.
+All these assume your doc root is /var/www.
 
 =head2 Install YUI
 
 Browse to http://developer.yahoo.com/yui/, download, and unzip into htdocs:
 
-	shell>cd /home/ron/httpd/prefork/htdocs
-	shell>unzip ~/Desktop/yui_2.7.0b.zip
+	shell>cd /var/www
+	shell>sudo unzip ~/Desktop/yui_2.7.0b.zip
 
-This creates /home/ron/httpd/prefork/htdocs/yui, and yui_url in .htajax.conf must match.
+This creates /var/www/yui, and yui_url in .htajax.conf must match.
 
 =head2 Install the module
 
@@ -342,24 +343,23 @@ or:
 
 =head2 Install the C<HTML::Template> files.
 
-	shell>cd /home/ron/httpd/prefork/htdocs
-	shell>mkdir -p assets/templates/cgi/application/demo/ajax
-	shell>cp distro's/htdocs/*.tmpl assets/templates/cgi/application/demo/ajax
+	shell>cd /var/www
+	shell>sudo mkdir -p assets/templates/cgi/application/demo/ajax
+	shell>cp distro's/htdocs/*.tmpl to assets/templates/cgi/application/demo/ajax
 
 Alternately, edit the now installed .htajax.conf, to adjust tmpl_path.
 
 =head2 Install the trivial instance script
 
-	shell>cd /home/ron/httpd/prefork
-	shell>cp distro's/htdocs/ajax.cgi cgi-bin
-	shell>chmod 755 cgi-bin/ajax.cgi
+	shell>cp distro's/htdocs/ajax.cgi to /usr/lib/cgi-bin
+	shell>sudo chmod 755 /usr/lib/cgi-bin/ajax.cgi
 
 =head2 Install the fancy instance script
 
-	shell>cd /home/ron/httpd/prefork/htdocs
-	shell>mkdir local
-	shell>cp distro's/htdocs/ajax local
-	shell>chmod 755 local/ajax
+	shell>cd /var/www
+	shell>sudo mkdir local
+	shell>cp distro's/htdocs/ajax to local
+	shell>sudo chmod 755 local/ajax
 
 =head2 Configure C<Apache> to use local/ajax
 
@@ -481,8 +481,7 @@ Home page: http://savage.net.au/index.html
 
 =head1 Copyright
 
-Australian copyright (c) 2009, Ron Savage. All rights reserved.
-
+Australian copyright (c) 2009, Ron Savage.
 	All Programs of mine are 'OSI Certified Open Source Software';
 	you can redistribute them and/or modify them under the terms of
 	The Artistic License, a copy of which is available at:
